@@ -1,0 +1,64 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: grid;
+  color: white;
+  overflow: hidden;
+  min-height: 100vh;
+  justify-items: center;
+  align-content: center;
+  background-color: #111;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+}
+
+// canvas {
+//   background: black;
+// }
+
+.fract {
+  height: min-content;
+  transform-origin: center -20px;
+  animation: swing ease-in-out 2s infinite alternate;
+  img {
+    transform-origin: center;
+    animation: rotate 40s linear infinite;
+    &:nth-of-type(even) {
+      animation-direction: reverse;
+    }
+  }
+
+  @for $i from 1 through 6 {
+    &:nth-child(#{$i}) {
+      width: calc(37px * #{$i});
+    }
+  }
+  @for $i from 7 through 11 {
+    &:nth-child(#{$i}) {
+      width: calc(37px * (11 - #{$i}));
+    }
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes swing {
+  from {
+    transform: rotate(30deg);
+  }
+  to {
+    transform: rotate(-30deg);
+  }
+}
